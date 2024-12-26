@@ -5,178 +5,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adarsh Furniture</title>
     <style>
+        /* Global styles */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
         }
+
+        /* Header styles */
         header {
-            background-color: #333;
+            background: linear-gradient(45deg, #2a2a72, #009ffd);
             color: white;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         header h1 {
+            font-size: 3rem;
             margin: 0;
-            font-size: 2.5em;
+            text-transform: uppercase;
         }
+
         header p {
-            margin: 5px 0;
-            font-size: 1.2em;
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            font-weight: 300;
         }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
-        }
-        .container .image-card {
-            position: relative;
-            width: 200px;
+
+        /* Speciality section */
+        .speciality {
             text-align: center;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            background-color: #fafafa;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .speciality h2 {
+            font-size: 2rem;
+            color: #2a2a72;
+        }
+
+        .speciality p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .gallery-item-container {
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .container img {
+
+        .gallery-item {
             width: 100%;
-            height: 200px;
+            height: 300px;
             object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease-in-out;
         }
-        .container img:hover {
+
+        .gallery-item:hover {
             transform: scale(1.05);
         }
-        .image-card p {
-            margin: 10px 0;
-            font-size: 1em;
-            color: #555;
+
+        .image-caption {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
         }
-        .modal {
+
+        /* Full Screen Modal */
+        #myModal {
             display: none;
             position: fixed;
-            top: 0;
+            z-index: 1;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
         }
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
+
+        #myModal img {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
         }
-        .modal .close {
+
+        /* Close button style */
+        .close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
+            top: 10px;
+            right: 10px;
             color: white;
+            font-size: 36px;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
             cursor: pointer;
         }
-        footer {
-            background-color: #333;
+
+        /* Contact Section */
+        .contact {
+            background-color: #2a2a72;
             color: white;
-            padding: 10px;
+            padding: 40px;
             text-align: center;
+            margin-top: 40px;
         }
-        footer p {
-            margin: 5px 0;
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact .phone, .contact .address {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+
     <header>
         <h1>Adarsh Furniture</h1>
-        <p>Premium Furniture at Affordable Prices</p>
+        <p>Showcasing our premium furniture collection</p>
     </header>
 
-    <div class="container">
-        <div class="image-card">
-            <img src="i1.jpeg" alt="Furniture 1" data-title="Furniture 1">
-            <p>Furniture 1</p>
+    <!-- Speciality Section -->
+    <div class="speciality">
+        <h2>Premium Furniture at Cheap Prices</h2>
+        <p>Our furniture is crafted to provide both luxury and comfort, all at affordable prices. Browse through our collection to find the perfect piece for your home!</p>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery">
+        <!-- Gallery items with zoom -->
+        <div class="gallery-item-container">
+            <img src="i1.jpeg" alt="Furniture Image 1" class="gallery-item" id="image1">
+            <div class="image-caption">Furniture 1</div>
         </div>
-        <div class="image-card">
-            <img src="i2.jpg" alt="Furniture 2" data-title="Furniture 2">
-            <p>Furniture 2</p>
+        <div class="gallery-item-container">
+            <img src="i2.jpg" alt="Furniture Image 2" class="gallery-item" id="image2">
+            <div class="image-caption">Furniture 2</div>
         </div>
-        <div class="image-card">
-            <img src="I3.png" alt="Furniture 3" data-title="Furniture 3">
-            <p>Furniture 3</p>
+        <div class="gallery-item-container">
+            <img src="I3.png" alt="Furniture Image 3" class="gallery-item" id="image3">
+            <div class="image-caption">Furniture 3</div>
         </div>
-        <div class="image-card">
-            <img src="I4.png" alt="Furniture 4" data-title="Furniture 4">
-            <p>Furniture 4</p>
+        <div class="gallery-item-container">
+            <img src="I4.png" alt="Furniture Image 4" class="gallery-item" id="image4">
+            <div class="image-caption">Furniture 4</div>
         </div>
-        <div class="image-card">
-            <img src="I5.png" alt="Furniture 5" data-title="Furniture 5">
-            <p>Furniture 5</p>
+        <div class="gallery-item-container">
+            <img src="I5.png" alt="Furniture Image 5" class="gallery-item" id="image5">
+            <div class="image-caption">Furniture 5</div>
         </div>
-        <div class="image-card">
-            <img src="I6.png" alt="Furniture 6" data-title="Furniture 6">
-            <p>Furniture 6</p>
+        <div class="gallery-item-container">
+            <img src="I6.png" alt="Furniture Image 6" class="gallery-item" id="image6">
+            <div class="image-caption">Furniture 6</div>
         </div>
-        <div class="image-card">
-            <img src="I7.png" alt="Furniture 7" data-title="Furniture 7">
-            <p>Furniture 7</p>
+        <div class="gallery-item-container">
+            <img src="I7.png" alt="Furniture Image 7" class="gallery-item" id="image7">
+            <div class="image-caption">Furniture 7</div>
         </div>
-        <div class="image-card">
-            <img src="I8.png" alt="Furniture 8" data-title="Furniture 8">
-            <p>Furniture 8</p>
+        <div class="gallery-item-container">
+            <img src="I8.png" alt="Furniture Image 8" class="gallery-item" id="image8">
+            <div class="image-caption">Furniture 8</div>
         </div>
-        <div class="image-card">
-            <img src="I9.png" alt="Furniture 9" data-title="Furniture 9">
-            <p>Furniture 9</p>
+        <div class="gallery-item-container">
+            <img src="I9.png" alt="Furniture Image 9" class="gallery-item" id="image9">
+            <div class="image-caption">Furniture 9</div>
         </div>
-        <div class="image-card">
-            <img src="I10.png" alt="Furniture 10" data-title="Furniture 10">
-            <p>Furniture 10</p>
+        <div class="gallery-item-container">
+            <img src="I10.png" alt="Furniture Image 10" class="gallery-item" id="image10">
+            <div class="image-caption">Furniture 10</div>
         </div>
-        <div class="image-card">
-            <img src="I11.png" alt="Furniture 11" data-title="Furniture 11">
-            <p>Furniture 11</p>
+        <div class="gallery-item-container">
+            <img src="I11.png" alt="Furniture Image 11" class="gallery-item" id="image11">
+            <div class="image-caption">Furniture 11</div>
         </div>
-        <div class="image-card">
-            <img src="I12.png" alt="Furniture 12" data-title="Furniture 12">
-            <p>Furniture 12</p>
+        <div class="gallery-item-container">
+            <img src="I12.png" alt="Furniture Image 12" class="gallery-item" id="image12">
+            <div class="image-caption">Furniture 12</div>
         </div>
     </div>
 
-    <div class="modal" id="imageModal">
+    <!-- Modal to display full-size image -->
+    <div id="myModal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modalImage" src="" alt="Zoomed Furniture">
+        <img id="modalImage" src="" alt="Full-size Image">
     </div>
 
-    <footer>
-        <p>Contact: 8787271599</p>
-        <p>Address: Arya Samaj Mandir, Adarsh Furniture, VIP Road</p>
-    </footer>
+    <!-- Contact Information Section -->
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <p class="phone">Phone: 8787271599</p>
+        <p class="address">Address: Arya Samaj Mandir, Adarsh Furniture, VIP Road</p>
+    </div>
 
     <script>
-        const modal = document.getElementById("imageModal");
-        const modalImage = document.getElementById("modalImage");
+        const images = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('myModal');
+        const modalImage = document.getElementById('modalImage');
 
-        document.querySelectorAll(".container img").forEach(img => {
-            img.addEventListener("click", () => {
-                modal.style.display = "flex";
-                modalImage.src = img.src;
+        images.forEach((image) => {
+            image.addEventListener('click', (e) => {
+                const imgSrc = e.target.src;
+                modal.style.display = "block";
+                modalImage.src = imgSrc;
             });
         });
 
         function closeModal() {
             modal.style.display = "none";
         }
-
-        window.addEventListener("click", (e) => {
-            if (e.target === modal) closeModal();
-        });
     </script>
 </body>
 </html>
