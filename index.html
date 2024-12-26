@@ -123,6 +123,29 @@
             border: none;
             cursor: pointer;
         }
+
+        /* Contact Section */
+        .contact {
+            background-color: #2a2a72;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact .phone, .contact .address {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -142,57 +165,84 @@
     <div class="gallery">
         <!-- Gallery items with zoom -->
         <div class="gallery-item-container">
-            <img src="i1.jpeg" alt="Furniture Image 1" class="gallery-item" id="image1">
+            <img src="i1.jpg" alt="Furniture Image 1" class="gallery-item" id="image1">
             <div class="image-caption">Furniture 1</div>
         </div>
-
         <div class="gallery-item-container">
             <img src="i2.jpg" alt="Furniture Image 2" class="gallery-item" id="image2">
             <div class="image-caption">Furniture 2</div>
         </div>
+        <div class="gallery-item-container">
+            <img src="i3.png" alt="Furniture Image 3" class="gallery-item" id="image3">
+            <div class="image-caption">Furniture 3</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i4.png" alt="Furniture Image 4" class="gallery-item" id="image4">
+            <div class="image-caption">Furniture 4</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i5.png" alt="Furniture Image 5" class="gallery-item" id="image5">
+            <div class="image-caption">Furniture 5</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i6.png" alt="Furniture Image 6" class="gallery-item" id="image6">
+            <div class="image-caption">Furniture 6</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i7.png" alt="Furniture Image 7" class="gallery-item" id="image7">
+            <div class="image-caption">Furniture 7</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i8.png" alt="Furniture Image 8" class="gallery-item" id="image8">
+            <div class="image-caption">Furniture 8</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i9.png" alt="Furniture Image 9" class="gallery-item" id="image9">
+            <div class="image-caption">Furniture 9</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i10.png" alt="Furniture Image 10" class="gallery-item" id="image10">
+            <div class="image-caption">Furniture 10</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i11.png" alt="Furniture Image 11" class="gallery-item" id="image11">
+            <div class="image-caption">Furniture 11</div>
+        </div>
+        <div class="gallery-item-container">
+            <img src="i12.png" alt="Furniture Image 12" class="gallery-item" id="image12">
+            <div class="image-caption">Furniture 12</div>
+        </div>
     </div>
 
-    <!-- Full-Screen Modal -->
-    <div id="myModal" class="modal">
+    <!-- Modal to display full-size image -->
+    <div id="myModal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modalImage" src="" alt="Full-Screen Image">
+        <img id="modalImage" src="" alt="Full-size Image">
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <p class="phone">Phone: 8787271599</p>
+        <p class="address">Address: Arya Samaj Mandir, Adarsh Furniture, VIP Road</p>
     </div>
 
     <script>
-        // Function to open the modal with the selected image
-        function openModal(imageSrc) {
-            const modal = document.getElementById("myModal");
-            const modalImage = document.getElementById("modalImage");
+        const images = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('myModal');
+        const modalImage = document.getElementById('modalImage');
 
-            modal.style.display = "block";
-            modalImage.src = imageSrc;
-
-            // Set initial zoom to 1
-            modalImage.style.transform = 'scale(1)';
-        }
-
-        // Function to close the modal when clicking the close button
-        function closeModal() {
-            const modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-
-        // Zoom on double-click within the modal
-        const modalImage = document.getElementById("modalImage");
-        modalImage.addEventListener("dblclick", function() {
-            let currentScale = parseFloat(modalImage.style.transform.replace("scale(", "").replace(")", "")) || 1;
-            currentScale = currentScale === 1 ? 2 : 1; // Toggle between zoomed-in (2x) and normal (1x)
-            modalImage.style.transform = `scale(${currentScale})`;
-        });
-
-        // Optional: Add event listener to open images in full screen on click
-        const images = document.querySelectorAll(".gallery-item");
-        images.forEach(image => {
-            image.addEventListener("click", function() {
-                openModal(image.src);
+        images.forEach((image) => {
+            image.addEventListener('click', (e) => {
+                const imgSrc = e.target.src;
+                modal.style.display = "block";
+                modalImage.src = imgSrc;
             });
         });
-    </script>
 
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    </script>
 </body>
 </html>
