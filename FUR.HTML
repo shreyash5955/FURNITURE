@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adarsh Furniture</title>
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(45deg, #2a2a72, #009ffd);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Speciality section */
+        .speciality {
+            text-align: center;
+            background-color: #fafafa;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .speciality h2 {
+            font-size: 2rem;
+            color: #2a2a72;
+        }
+
+        .speciality p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .gallery-item-container {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Full Screen Modal */
+        #myModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+
+        #myModal img {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+
+        /* Close button style */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Adarsh Furniture</h1>
+        <p>Showcasing our premium furniture collection</p>
+    </header>
+
+    <!-- Speciality Section -->
+    <div class="speciality">
+        <h2>Premium Furniture at Cheap Prices</h2>
+        <p>Our furniture is crafted to provide both luxury and comfort, all at affordable prices. Browse through our collection to find the perfect piece for your home!</p>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery">
+        <!-- Gallery items with zoom -->
+        <div class="gallery-item-container">
+            <img src="file:///C:/Users/shreyash/OneDrive/Apps/FURNITURE/i1.jpeg" alt="Furniture Image 1" class="gallery-item" id="image1">
+            <div class="image-caption">Furniture 1</div>
+        </div>
+
+        <div class="gallery-item-container">
+            <img src="file:///C:/Users/shreyash/OneDrive/Apps/FURNITURE/i2.jpg" alt="Furniture Image 2" class="gallery-item" id="image2">
+            <div class="image-caption">Furniture 2</div>
+        </div>
+    </div>
+
+    <!-- Full-Screen Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Full-Screen Image">
+    </div>
+
+    <script>
+        // Function to open the modal with the selected image
+        function openModal(imageSrc) {
+            const modal = document.getElementById("myModal");
+            const modalImage = document.getElementById("modalImage");
+
+            modal.style.display = "block";
+            modalImage.src = imageSrc;
+
+            // Set initial zoom to 1
+            modalImage.style.transform = 'scale(1)';
+        }
+
+        // Function to close the modal when clicking the close button
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Zoom on double-click within the modal
+        const modalImage = document.getElementById("modalImage");
+        modalImage.addEventListener("dblclick", function() {
+            let currentScale = parseFloat(modalImage.style.transform.replace("scale(", "").replace(")", "")) || 1;
+            currentScale = currentScale === 1 ? 2 : 1; // Toggle between zoomed-in (2x) and normal (1x)
+            modalImage.style.transform = `scale(${currentScale})`;
+        });
+
+        // Optional: Add event listener to open images in full screen on click
+        const images = document.querySelectorAll(".gallery-item");
+        images.forEach(image => {
+            image.addEventListener("click", function() {
+                openModal(image.src);
+            });
+        });
+    </script>
+
+</body>
+</html>
